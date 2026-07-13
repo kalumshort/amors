@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Amor's Tyres and Servicing
 
-## Getting Started
+Modern, SEO-optimised marketing site for **Amor's Tyres and Servicing** — a
+family-run **mobile** tyre-fitting and vehicle-servicing business covering
+Bristol and the surrounding areas.
 
-First, run the development server:
+Built with **Next.js (App Router) + TypeScript + Tailwind CSS v4**, server-rendered
+and statically generated for strong local SEO, with an **individual page per
+service area** to capture local search intent.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Tech
+
+- Next.js 16 (App Router, RSC) · React 19 · TypeScript
+- Tailwind CSS v4 (brand tokens in `src/app/globals.css`)
+- `zod` (form validation) · `resend` (contact-form email)
+- Deploys to **Firebase App Hosting** (Next.js SSR on Cloud Run)
+
+## Project structure
+
+```
+src/
+  app/                 Routes (App Router)
+    page.tsx           Home
+    services/          Services index + [slug] pages
+    locations/         Areas index + [slug] pages  ← per-area SEO pages
+    about/  contact/
+    api/contact/       Contact-form endpoint (Resend)
+    sitemap.ts  robots.ts  opengraph-image.tsx
+  components/          Reusable UI (Header, Footer, cards, Faq, ContactForm…)
+  data/                Single source of truth
+    business.ts        NAP: name, phone, email, hours, geo, socials
+    services.ts        6 services (content + FAQs)
+    locations.ts       14 service areas (unique local content)
+  lib/                 seo.ts (JSON-LD builders) · og.tsx (OG image)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**To add a service or area**, append an entry to `src/data/services.ts` or
+`src/data/locations.ts` — the page, sitemap, metadata and JSON-LD are all generated.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Local development
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+cp .env.example .env.local   # optional — needed only for real email delivery
+npm run dev                  # http://localhost:3000
+```
 
-## Learn More
+The contact form works without any config in dev (it logs enquiries to the
+console). For real delivery, set `RESEND_API_KEY` in `.env.local`.
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build   # production build — prerenders all service & location pages
+npm start       # serve the production build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contact-form email (Resend)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Create an account at [resend.com](https://resend.com) and an API key.
+2. Verify your sending domain (e.g. `amorstyresandservicing.co.uk`) and set
+   `CONTACT_FROM_EMAIL` to an address on it. Until then, testing can use
+   `onboarding@resend.dev`.
+3. Enquiries are delivered to `CONTACT_TO_EMAIL`
+   (defaults to `amorstyresandservicing@outlook.com`).
 
-## Deploy on Vercel
+## Deploy — Firebase App Hosting
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Config lives in [`apphosting.yaml`](./apphosting.yaml).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. `npm i -g firebase-tools && firebase login`
+2. `firebase init apphosting` (select/create your Firebase project & region).
+3. Store the Resend key as a secret and enable it:
+   ```bash
+   firebase apphosting:secrets:set RESEND_API_KEY
+   ```
+   then uncomment the `RESEND_API_KEY` block in `apphosting.yaml`.
+4. App Hosting builds automatically on push to the connected GitHub branch, or
+   roll out manually with `firebase deploy`.
+
+## SEO features
+
+- Unique `<title>` / meta description + canonical per page
+- JSON-LD: `AutoRepair` LocalBusiness (site-wide), `Service`, per-area
+  `LocalBusiness` with scoped `areaServed`, `BreadcrumbList`, `FAQPage`
+- Dynamic `sitemap.xml` (all services + areas) and `robots.txt`
+- Generated Open Graph images per route
+- Semantic HTML, mobile-first, accessible (skip link, focus states, ARIA)
+
+## To finish before go-live
+
+- Real logo + photography (currently a text wordmark + brand placeholders)
+- Firebase project + Resend key/domain verification
+- Swap placeholder reviews in `src/components/Testimonials.tsx` for real ones
+- Confirm the production domain in `src/data/business.ts` (`url`)

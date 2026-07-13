@@ -1,65 +1,298 @@
-import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/Button";
+import { Icon } from "@/components/Icon";
+import { ServiceCard } from "@/components/ServiceCard";
+import { LocationCard } from "@/components/LocationCard";
+import { CTASection } from "@/components/CTASection";
+import { SectionHeading } from "@/components/SectionHeading";
+import { Testimonials } from "@/components/Testimonials";
+import { Gallery } from "@/components/Gallery";
+import { CoverageMap } from "@/components/CoverageMap";
+import { TrustBadges } from "@/components/TrustBadges";
+import { BookingLookup } from "@/components/BookingLookup";
+import { services } from "@/data/services";
+import { locations } from "@/data/locations";
+import { business, telHref, whatsappHref, trustPoints } from "@/data/business";
 
-export default function Home() {
+const steps = [
+  {
+    icon: "phone",
+    title: "Call or message",
+    text: "Tell us your vehicle, location and what you need. We'll give you an upfront price.",
+  },
+  {
+    icon: "home",
+    title: "We come to you",
+    text: "We arrive at your home or workplace at a time that suits — no garage trip.",
+  },
+  {
+    icon: "check",
+    title: "Back on the road",
+    text: "Work done on the spot with quality parts, and you're sorted the same day.",
+  },
+];
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-ink text-white">
+        <div className="bg-grid-dark">
+          <div className="container-x grid items-center gap-12 py-16 lg:grid-cols-[1.1fr_0.9fr] lg:py-24">
+            <div>
+              <p className="eyebrow text-brand-light">
+                <Icon name="pin" className="h-4 w-4" />
+                {business.baseCity} &amp; surrounding areas
+              </p>
+              <h1 className="mt-4 text-4xl font-extrabold leading-[1.05] sm:text-5xl lg:text-6xl">
+                Mobile tyres &amp; servicing that{" "}
+                <span className="text-brand">come to you</span>
+              </h1>
+              <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/75">
+                Family-run mobile tyre fitting, vehicle servicing and
+                diagnostics across {business.baseCity}. Transparent pricing, fast
+                turnaround and 24/7 emergency call-out — we bring the garage to
+                your driveway.
+              </p>
+
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <Button href={telHref} variant="primary" size="lg">
+                  <Icon name="phone" className="h-5 w-5" />
+                  Call {business.phoneDisplay}
+                </Button>
+                <Button href="/contact" variant="white" size="lg">
+                  Get a free quote
+                  <Icon name="arrow" className="h-5 w-5" />
+                </Button>
+              </div>
+
+              <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/70">
+                {[
+                  "We come to you",
+                  "Same-day fitting",
+                  "24/7 emergency call-out",
+                ].map((p) => (
+                  <li key={p} className="flex items-center gap-2">
+                    <Icon name="check" className="h-4 w-4 text-brand-light" />
+                    {p}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Quick contact card */}
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur sm:p-8">
+              <h2 className="text-xl font-bold">Need help right now?</h2>
+              <p className="mt-2 text-sm text-white/70">
+                Flat tyre, warning light or a car that won&rsquo;t start?
+                We&rsquo;re ready when you are.
+              </p>
+              <div className="mt-6 space-y-3">
+                <a
+                  href={telHref}
+                  className="flex items-center gap-4 rounded-2xl bg-brand p-4 transition-colors hover:bg-brand-dark"
+                >
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/20">
+                    <Icon name="phone" className="h-5 w-5" />
+                  </span>
+                  <span>
+                    <span className="block text-xs uppercase tracking-wide text-white/70">
+                      Call us
+                    </span>
+                    <span className="block text-lg font-bold">
+                      {business.phoneDisplay}
+                    </span>
+                  </span>
+                </a>
+                <a
+                  href={whatsappHref}
+                  className="flex items-center gap-4 rounded-2xl bg-white/10 p-4 transition-colors hover:bg-white/15"
+                >
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-brand-light">
+                    <Icon name="whatsapp" className="h-5 w-5" />
+                  </span>
+                  <span>
+                    <span className="block text-xs uppercase tracking-wide text-white/60">
+                      Message us
+                    </span>
+                    <span className="block text-lg font-bold">On WhatsApp</span>
+                  </span>
+                </a>
+              </div>
+              <div className="mt-6 flex items-center gap-2 border-t border-white/10 pt-4 text-sm text-white/60">
+                <Icon name="clock" className="h-4 w-4 text-brand-light" />
+                {business.hours.weekdays}
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+      </section>
+
+      {/* Online booking (BookMyGarage widget) */}
+      <section className="border-t border-white/10 bg-ink text-white">
+        <div className="bg-grid-dark">
+          <div className="container-x py-16 lg:py-24">
+            <div className="mx-auto max-w-2xl text-center">
+              <p className="eyebrow justify-center text-brand-light">
+                <Icon name="check" className="h-4 w-4" />
+                Instant online booking
+              </p>
+              <h2 className="mt-4 text-3xl font-extrabold sm:text-4xl">
+                Book your MOT, service or tyres in seconds
+              </h2>
+              <p className="mt-4 text-white/70">
+                Enter your registration for an instant price and pick a time that
+                suits — or call us on{" "}
+                <a href={telHref} className="font-semibold text-brand-light">
+                  {business.phoneDisplay}
+                </a>{" "}
+                and we&rsquo;ll sort it for you.
+              </p>
+            </div>
+            <div className="mx-auto mt-10 max-w-xl">
+              <BookingLookup />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <TrustBadges />
+
+      {/* Services */}
+      <section className="py-16 lg:py-24">
+        <div className="container-x">
+          <SectionHeading
+            eyebrow="What we do"
+            title="Everything your car needs — at your door"
+            subtitle={`From a single tyre to a full service, our mobile team covers it all across ${business.baseCity} and beyond.`}
+          />
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {services.map((s) => (
+              <ServiceCard key={s.slug} service={s} />
+            ))}
+          </div>
+          <div className="mt-10 text-center">
+            <Button href="/services" variant="outline" size="lg">
+              View all services
+              <Icon name="arrow" className="h-5 w-5" />
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* How it works */}
+      <section className="bg-mist py-16 lg:py-24">
+        <div className="container-x">
+          <SectionHeading
+            eyebrow="How it works"
+            title="Sorted in three simple steps"
+          />
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {steps.map((step, i) => (
+              <div
+                key={step.title}
+                className="relative rounded-2xl border border-line bg-white p-7 shadow-[var(--shadow-card)]"
+              >
+                <span className="absolute right-6 top-6 text-5xl font-extrabold text-brand/10">
+                  {i + 1}
+                </span>
+                <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-soft text-brand-dark">
+                  <Icon name={step.icon} className="h-6 w-6" />
+                </span>
+                <h3 className="mt-5 text-lg font-bold text-ink">{step.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink/65">
+                  {step.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why choose us */}
+      <section className="py-16 lg:py-24">
+        <div className="container-x grid items-center gap-12 lg:grid-cols-2">
+          <div>
+            <SectionHeading
+              align="left"
+              eyebrow="Why Amor's"
+              title="A proper garage service — without the garage"
+              subtitle="We're a family-run business built on doing right by our customers. No pressure, no jargon, no hidden costs — just honest, convenient car care."
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+              {trustPoints.map((point) => (
+                <li key={point} className="flex items-start gap-3">
+                  <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-soft text-brand-dark">
+                    <Icon name="check" className="h-4 w-4" />
+                  </span>
+                  <span className="text-sm text-ink/75">{point}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8">
+              <Button href="/about" variant="dark">
+                More about us
+                <Icon name="arrow" className="h-4 w-4" />
+              </Button>
+            </div>
+          </div>
+          <CoverageMap className="h-full min-h-[360px]" spread={0.35} />
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* Areas covered */}
+      <section className="bg-mist py-16 lg:py-24">
+        <div className="container-x">
+          <SectionHeading
+            eyebrow="Areas we cover"
+            title={`Mobile car care across ${business.baseCity} & beyond`}
+            subtitle="Tap your area for local tyre fitting, servicing and diagnostics — we come to you."
+          />
+          <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {locations.map((l) => (
+              <LocationCard key={l.slug} location={l} />
+            ))}
+          </div>
+          <div className="mt-10 text-center">
+            <Link
+              href="/locations"
+              className="inline-flex items-center gap-1.5 font-semibold text-brand-dark hover:underline"
+            >
+              See all areas covered
+              <Icon name="arrow" className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Our work */}
+      <section className="py-16 lg:py-24">
+        <div className="container-x">
+          <SectionHeading
+            eyebrow="Our work"
+            title="Real jobs, real results"
+            subtitle={`A look at some of the mobile tyre and servicing work we've carried out across ${business.baseCity}.`}
+          />
+          <div className="mt-12">
+            <Gallery />
+          </div>
+        </div>
+      </section>
+
+      {/* Reviews */}
+      <section className="bg-mist py-16 lg:py-24">
+        <div className="container-x">
+          <SectionHeading
+            eyebrow="What customers say"
+            title="Trusted by drivers across Bristol"
+          />
+          <div className="mt-12">
+            <Testimonials />
+          </div>
+        </div>
+      </section>
+
+      <CTASection />
+    </>
   );
 }
