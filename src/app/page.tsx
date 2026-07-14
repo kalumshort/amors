@@ -55,17 +55,6 @@ export default function HomePage() {
                 your driveway.
               </p>
 
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Button href={telHref} variant="primary" size="lg">
-                  <Icon name="phone" className="h-5 w-5" />
-                  Call {business.phoneDisplay}
-                </Button>
-                <Button href="/contact" variant="white" size="lg">
-                  Get a free quote
-                  <Icon name="arrow" className="h-5 w-5" />
-                </Button>
-              </div>
-
               <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/70">
                 {[
                   "We come to you",
@@ -118,6 +107,15 @@ export default function HomePage() {
                     <span className="block text-lg font-bold">On WhatsApp</span>
                   </span>
                 </a>
+                <Button
+                  href="/contact"
+                  variant="white"
+                  size="lg"
+                  className="w-full"
+                >
+                  Get a free quote
+                  <Icon name="arrow" className="h-5 w-5" />
+                </Button>
               </div>
               <div className="mt-6 flex items-center gap-2 border-t border-white/10 pt-4 text-sm text-white/60">
                 <Icon name="clock" className="h-4 w-4 text-brand-light" />
