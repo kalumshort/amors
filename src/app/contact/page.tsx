@@ -3,6 +3,7 @@ import { Icon } from "@/components/Icon";
 import { ContactForm } from "@/components/ContactForm";
 import { CoverageMap } from "@/components/CoverageMap";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { SectionDivider } from "@/components/SectionDivider";
 import { JsonLd } from "@/components/JsonLd";
 import {
   business,
@@ -64,6 +65,8 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      <SectionDivider top="ink" bottom="paper" variant="wave" />
 
       <section className="py-16 lg:py-24">
         <div className="container-x grid gap-12 lg:grid-cols-[1fr_1.2fr]">

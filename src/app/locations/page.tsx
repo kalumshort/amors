@@ -3,6 +3,7 @@ import { LocationCard } from "@/components/LocationCard";
 import { CoverageMap } from "@/components/CoverageMap";
 import { CTASection } from "@/components/CTASection";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { SectionDivider } from "@/components/SectionDivider";
 import { JsonLd } from "@/components/JsonLd";
 import { locations } from "@/data/locations";
 import { business } from "@/data/business";
@@ -55,6 +56,8 @@ export default function LocationsPage() {
         </div>
       </section>
 
+      <SectionDivider top="ink" bottom="paper" variant="drip" />
+
       <section className="py-16 lg:py-24">
         <div className="container-x space-y-12">
           {byCounty().map(([county, list]) => (
@@ -72,6 +75,8 @@ export default function LocationsPage() {
           ))}
         </div>
       </section>
+
+      <SectionDivider top="paper" bottom="ink" variant="waves" />
 
       <CTASection />
     </>

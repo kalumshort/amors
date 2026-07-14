@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ServiceCard } from "@/components/ServiceCard";
 import { CTASection } from "@/components/CTASection";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { SectionDivider } from "@/components/SectionDivider";
 import { JsonLd } from "@/components/JsonLd";
 import { services } from "@/data/services";
 import { business } from "@/data/business";
@@ -43,6 +44,8 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      <SectionDivider top="ink" bottom="paper" variant="arch" />
+
       <section className="py-16 lg:py-24">
         <div className="container-x grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (
@@ -50,6 +53,8 @@ export default function ServicesPage() {
           ))}
         </div>
       </section>
+
+      <SectionDivider top="paper" bottom="ink" variant="waves" />
 
       <CTASection />
     </>

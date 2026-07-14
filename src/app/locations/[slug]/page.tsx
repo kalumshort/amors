@@ -5,6 +5,7 @@ import { Icon } from "@/components/Icon";
 import { Faq } from "@/components/Faq";
 import { CTASection } from "@/components/CTASection";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { SectionDivider } from "@/components/SectionDivider";
 import { ServiceCard } from "@/components/ServiceCard";
 import { LocationCard } from "@/components/LocationCard";
 import { CoverageMap } from "@/components/CoverageMap";
@@ -123,6 +124,8 @@ export default async function LocationPage({ params }: Params) {
         </div>
       </section>
 
+      <SectionDivider top="ink" bottom="paper" variant="curve" />
+
       {/* Services in this area */}
       <section className="py-16 lg:py-24">
         <div className="container-x">
@@ -141,8 +144,10 @@ export default async function LocationPage({ params }: Params) {
         </div>
       </section>
 
+      <SectionDivider top="paper" bottom="mist" variant="arch" />
+
       {/* Local detail + map */}
-      <section className="border-t border-line bg-mist py-16 lg:py-24">
+      <section className="bg-mist py-16 lg:py-24">
         <div className="container-x grid gap-12 lg:grid-cols-2">
           <div>
             <h2 className="text-2xl font-bold text-ink sm:text-3xl">
@@ -195,22 +200,28 @@ export default async function LocationPage({ params }: Params) {
 
       {/* Nearby areas */}
       {nearby.length > 0 && (
-        <section className="py-16 lg:py-20">
-          <div className="container-x">
-            <h2 className="text-2xl font-bold text-ink">
-              Areas near {loc.name} we also cover
-            </h2>
-            <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {nearby.map((l) => (
-                <LocationCard key={l.slug} location={l} />
-              ))}
+        <>
+          <SectionDivider top="mist" bottom="paper" variant="drip" />
+
+          <section className="py-16 lg:py-20">
+            <div className="container-x">
+              <h2 className="text-2xl font-bold text-ink">
+                Areas near {loc.name} we also cover
+              </h2>
+              <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {nearby.map((l) => (
+                  <LocationCard key={l.slug} location={l} />
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+
+          <SectionDivider top="paper" bottom="mist" variant="wave" flip />
+        </>
       )}
 
       {/* FAQ */}
-      <section className="border-t border-line bg-mist py-16 lg:py-24">
+      <section className="bg-mist py-16 lg:py-24">
         <div className="container-x max-w-3xl">
           <h2 className="text-2xl font-bold text-ink sm:text-3xl">
             {loc.name} — your questions answered
@@ -220,6 +231,8 @@ export default async function LocationPage({ params }: Params) {
           </div>
         </div>
       </section>
+
+      <SectionDivider top="mist" bottom="ink" variant="waves" />
 
       <CTASection
         title={`Mobile tyres & servicing in ${loc.name}`}

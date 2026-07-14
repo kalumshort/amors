@@ -6,6 +6,7 @@ import { Icon } from "@/components/Icon";
 import { Faq } from "@/components/Faq";
 import { CTASection } from "@/components/CTASection";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { SectionDivider } from "@/components/SectionDivider";
 import { LocationCard } from "@/components/LocationCard";
 import { JsonLd } from "@/components/JsonLd";
 import { services, getService } from "@/data/services";
@@ -82,6 +83,8 @@ export default async function ServicePage({ params }: Params) {
           </div>
         </div>
       </section>
+
+      <SectionDivider top="ink" bottom="paper" variant="curve" />
 
       {/* Body */}
       <section className="py-16 lg:py-24">
@@ -170,8 +173,10 @@ export default async function ServicePage({ params }: Params) {
         </div>
       </section>
 
+      <SectionDivider top="paper" bottom="mist" variant="slant" />
+
       {/* Areas */}
-      <section className="border-t border-line bg-mist py-16">
+      <section className="bg-mist py-16">
         <div className="container-x">
           <h2 className="text-2xl font-bold text-ink">
             {service.name} near you
@@ -187,6 +192,8 @@ export default async function ServicePage({ params }: Params) {
           </div>
         </div>
       </section>
+
+      <SectionDivider top="mist" bottom="ink" variant="waves" />
 
       <CTASection title={`Need ${service.name.toLowerCase()} today?`} />
     </>

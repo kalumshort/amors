@@ -4,6 +4,7 @@ import { Icon } from "@/components/Icon";
 import { ServiceCard } from "@/components/ServiceCard";
 import { LocationCard } from "@/components/LocationCard";
 import { CTASection } from "@/components/CTASection";
+import { SectionDivider } from "@/components/SectionDivider";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Testimonials } from "@/components/Testimonials";
 import { Gallery } from "@/components/Gallery";
@@ -156,6 +157,8 @@ export default function HomePage() {
 
       <TrustBadges />
 
+      <SectionDivider top="ink-800" bottom="paper" variant="curve" />
+
       {/* Services */}
       <section className="py-16 lg:py-24">
         <div className="container-x">
@@ -177,6 +180,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <SectionDivider top="paper" bottom="mist" variant="slant" />
 
       {/* How it works */}
       <section className="bg-mist py-16 lg:py-24">
@@ -206,6 +211,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <SectionDivider top="mist" bottom="paper" variant="wave" />
 
       {/* Why choose us */}
       <section className="py-16 lg:py-24">
@@ -238,6 +245,8 @@ export default function HomePage() {
         </div>
       </section>
 
+      <SectionDivider top="paper" bottom="mist" variant="arch" flip />
+
       {/* Areas covered */}
       <section className="bg-mist py-16 lg:py-24">
         <div className="container-x">
@@ -263,6 +272,8 @@ export default function HomePage() {
         </div>
       </section>
 
+      <SectionDivider top="mist" bottom="paper" variant="drip" />
+
       {/* Our work */}
       <section className="py-16 lg:py-24">
         <div className="container-x">
@@ -277,6 +288,8 @@ export default function HomePage() {
         </div>
       </section>
 
+      <SectionDivider top="paper" bottom="mist" variant="wave" flip />
+
       {/* Reviews */}
       <section className="bg-mist py-16 lg:py-24">
         <div className="container-x">
@@ -289,6 +302,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <SectionDivider top="mist" bottom="ink" variant="waves" />
 
       <CTASection />
     </>

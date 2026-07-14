@@ -4,6 +4,7 @@ import { Button } from "@/components/Button";
 import { CTASection } from "@/components/CTASection";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SectionHeading } from "@/components/SectionHeading";
+import { SectionDivider } from "@/components/SectionDivider";
 import { JsonLd } from "@/components/JsonLd";
 import { business, telHref, trustPoints } from "@/data/business";
 import { breadcrumbSchema } from "@/lib/seo";
@@ -47,8 +48,10 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <SectionDivider top="ink" bottom="mist" variant="curve" />
+
       {/* Stats */}
-      <section className="border-b border-line bg-mist">
+      <section className="bg-mist">
         <div className="container-x grid grid-cols-2 gap-6 py-10 sm:grid-cols-4">
           {stats.map((s) => (
             <div key={s.label} className="text-center">
@@ -60,6 +63,8 @@ export default function AboutPage() {
           ))}
         </div>
       </section>
+
+      <SectionDivider top="mist" bottom="paper" variant="wave" />
 
       {/* Story */}
       <section className="py-16 lg:py-24">
@@ -115,6 +120,8 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <SectionDivider top="paper" bottom="ink" variant="waves" />
 
       <CTASection />
     </>
