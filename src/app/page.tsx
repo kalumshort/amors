@@ -29,7 +29,7 @@ const steps = [
   {
     icon: "check",
     title: "Back on the road",
-    text: "Work done on the spot with quality parts, and you're sorted the same day.",
+    text: "Work done on the spot with quality parts, and you're back on the road fast.",
   },
 ];
 
@@ -52,15 +52,15 @@ export default function HomePage() {
               <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/75">
                 Family-run mobile tyre fitting, vehicle servicing and
                 diagnostics across {business.baseCity}. Transparent pricing, fast
-                turnaround and 24/7 emergency call-out — we bring the garage to
-                your driveway.
+                turnaround and 24/7 emergency tyre call-out — we bring the garage
+                to your driveway.
               </p>
 
               <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/70">
                 {[
                   "We come to you",
-                  "Same-day fitting",
-                  "24/7 emergency call-out",
+                  "Same-day tyre fitting",
+                  "24/7 emergency tyre call-out",
                 ].map((p) => (
                   <li key={p} className="flex items-center gap-2">
                     <Icon name="check" className="h-4 w-4 text-brand-light" />
@@ -137,7 +137,7 @@ export default function HomePage() {
                 Instant online booking
               </p>
               <h2 className="mt-4 text-3xl font-extrabold sm:text-4xl">
-                Book your MOT, service or tyres in seconds
+                Book your service or tyres in seconds
               </h2>
               <p className="mt-4 text-white/70">
                 Enter your registration for an instant price and pick a time that

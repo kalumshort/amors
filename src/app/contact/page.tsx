@@ -106,7 +106,7 @@ export default function ContactPage() {
                 <div>
                   <p className="font-semibold text-ink">Opening hours</p>
                   <p className="text-sm text-ink/65">{business.hours.weekdays}</p>
-                  <p className="text-sm text-ink/65">{business.hours.sunday}</p>
+                  <p className="text-sm text-ink/65">{business.hours.weekend}</p>
                   <p className="mt-1 text-sm font-medium text-brand-dark">
                     {business.hours.emergency}
                   </p>

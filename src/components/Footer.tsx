@@ -126,10 +126,9 @@ export function Footer() {
             </li>
           </ul>
           <div className="mt-6 rounded-xl bg-white/5 p-4 text-sm">
-            <p className="font-semibold text-white">24/7 Emergency Call-Out</p>
+            <p className="font-semibold text-white">24/7 Emergency Tyre Call-Out</p>
             <p className="mt-1 text-white/70">
-              Stuck with a flat or a car that won&rsquo;t start? Call us any
-              time.
+              Stuck with a flat or a blowout? Call us any time.
             </p>
           </div>
         </nav>

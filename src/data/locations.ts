@@ -113,7 +113,7 @@ export const locations: Location[] = [
     name: "Portishead",
     county: "North Somerset",
     intro:
-      "Out on the coast, Portishead is a fair drive from the nearest tyre bays — so a mobile service is a genuine time-saver. From the Marina and High Street out to Portbury and Pill, we bring tyre fitting, servicing and emergency call-out to your door.",
+      "Out on the coast, Portishead is a fair drive from the nearest tyre bays — so a mobile service is a genuine time-saver. From the Marina and High Street out to Portbury and Pill, we bring tyre fitting, servicing and 24/7 emergency tyre call-out to your door.",
     nearbyAreas: ["clevedon", "nailsea", "bristol"],
     postcodes: ["BS20"],
     landmarks: ["Portishead Marina", "High Street", "Portbury", "Pill", "Lake Grounds"],

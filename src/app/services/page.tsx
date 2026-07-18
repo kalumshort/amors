@@ -38,7 +38,7 @@ export default function ServicesPage() {
             </h1>
             <p className="mt-5 max-w-2xl text-lg text-white/75">
               Whatever your car needs, we bring it to your driveway. Quality
-              parts, honest pricing and same-day availability.
+              parts, honest pricing and fast turnaround.
             </p>
           </div>
         </div>

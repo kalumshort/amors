@@ -3,7 +3,7 @@ import { Icon } from "./Icon";
 const badges = [
   { icon: "home", label: "We come to you" },
   { icon: "money", label: "Transparent pricing" },
-  { icon: "clock", label: "24/7 call-out" },
+  { icon: "clock", label: "24/7 tyre call-out" },
   { icon: "shield", label: "All makes & models" },
 ];
 

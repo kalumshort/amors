@@ -7,7 +7,7 @@ export const business = {
   legalName: "Amor's Tyres and Servicing",
   tagline: "Mobile tyres & vehicle servicing — we come to you",
   description:
-    "Family-run mobile tyre fitting, vehicle servicing and diagnostics across Bristol and the surrounding areas. Transparent pricing, fast turnaround and 24/7 emergency call-out — we bring the garage to your home or workplace.",
+    "Family-run mobile tyre fitting, vehicle servicing and diagnostics across Bristol and the surrounding areas. Transparent pricing, fast turnaround and 24/7 emergency tyre call-out — we bring the garage to your home or workplace.",
 
   // Contact
   phoneDisplay: "07503 185406",
@@ -25,19 +25,19 @@ export const business = {
 
   // Hours
   hours: {
-    weekdays: "Mon–Sat: 8:00am – 6:00pm",
-    sunday: "Sunday: Emergency call-out only",
-    emergency: "24/7 emergency call-out available",
+    weekdays: "Mon–Fri: 8:00am – 6:00pm",
+    weekend: "Weekends: Emergency tyres only",
+    emergency: "24/7 emergency tyre call-out",
   },
   openingHoursSpec: {
-    days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
     opens: "08:00",
     closes: "18:00",
   },
 
   // Social
   social: {
-    facebook: "https://www.facebook.com/profile.php?id=61571107013301",
+    facebook: "https://www.facebook.com/profile.php?id=61582734751190",
   },
 
   // BookMyGarage booking page. Our custom reg-plate lookup appends ?ref=<host>&vrm=<REG>
@@ -57,8 +57,8 @@ export const whatsappHref = `https://wa.me/${business.whatsapp}`;
 export const trustPoints = [
   "Family-run & fully mobile — we come to you",
   "Transparent, upfront pricing with no hidden fees",
-  "24/7 emergency call-out across Bristol",
-  "Same-day fitting & servicing available",
+  "24/7 emergency tyre call-out across Bristol",
+  "Same-day tyre fitting available",
   "Qualified, experienced technicians",
   "All makes & models covered",
 ] as const;

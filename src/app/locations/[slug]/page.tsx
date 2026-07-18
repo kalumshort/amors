@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   if (!loc) return {};
   return {
     title: `Mobile Tyres & Vehicle Servicing in ${loc.name}`,
-    description: `Mobile tyre fitting, servicing, diagnostics, brakes and batteries in ${loc.name}, ${loc.county}. We come to you — same-day & 24/7 emergency call-out. Call ${business.phoneDisplay}.`,
+    description: `Mobile tyre fitting, servicing, diagnostics, brakes and batteries in ${loc.name}, ${loc.county}. We come to you — same-day tyre fitting & 24/7 emergency tyre call-out. Call ${business.phoneDisplay}.`,
     alternates: { canonical: `/locations/${loc.slug}` },
     openGraph: {
       title: `Mobile Tyres & Servicing in ${loc.name} | ${business.name}`,
@@ -57,7 +57,7 @@ function localFaqs(loc: Location): FaqItem[] {
     },
     {
       q: `How quickly can you get to ${loc.name}?`,
-      a: `We offer same-day appointments in most cases and 24/7 emergency call-out for unsafe tyres or a car that won't start in ${loc.name}.`,
+      a: `We offer same-day tyre fitting in most cases and 24/7 emergency tyre call-out for unsafe or dangerous tyres in ${loc.name}.`,
     },
     {
       q: `How much does mobile tyre fitting in ${loc.name} cost?`,
@@ -236,7 +236,7 @@ export default async function LocationPage({ params }: Params) {
 
       <CTASection
         title={`Mobile tyres & servicing in ${loc.name}`}
-        subtitle={`Call now for a free quote — we come to you across ${loc.name} and ${loc.county}, same-day where we can.`}
+        subtitle={`Call now for a free quote — we come to you across ${loc.name} and ${loc.county}, with 24/7 emergency tyre call-out where you need us.`}
       />
     </>
   );

@@ -17,7 +17,7 @@ export function CTASection({
         <div className="container-x py-16 text-center lg:py-20">
           <p className="eyebrow justify-center text-brand-light">
             <Icon name="clock" className="h-4 w-4" />
-            Same-day &amp; 24/7 emergency call-out
+            Same-day fitting &amp; 24/7 emergency tyre call-out
           </p>
           <h2 className="mx-auto mt-4 max-w-2xl text-3xl font-extrabold sm:text-4xl">
             {title}

@@ -1,21 +1,24 @@
 import { Icon } from "./Icon";
 
-// Placeholder reviews — swap for real customer testimonials when available.
-const reviews = [
+// Real customer reviews from our Facebook recommendations.
+type Review = {
+  name: string;
+  area?: string;
+  text: string;
+};
+
+const reviews: Review[] = [
   {
-    name: "Sarah T.",
-    area: "Bishopston, Bristol",
-    text: "Came out the same day to fit two tyres on my driveway. Friendly, quick and cheaper than the quote I got from a garage. Couldn't ask for more.",
+    name: "Hayley M.",
+    text: "Excellent service, called early this morning about a flat tyre and was fixed within the hour! Highly recommend.",
   },
   {
-    name: "Mark D.",
-    area: "Portishead",
-    text: "Car wouldn't start before work — they were with me within the hour, tested it and fitted a new battery on the spot. Absolute lifesaver.",
+    name: "MGF Window Cleaning",
+    text: "Highly recommend. Changed both our front tyres while we were still able to work and recommended a better quality tyre for our van to what we have usually been given by a standard garage. Friendly, reliable and quality service.",
   },
   {
-    name: "Priya K.",
-    area: "Keynsham",
-    text: "Had my car serviced at home while I worked. Clear about what was needed, no upselling, and a proper record for my service history.",
+    name: "Paws & Plays Pet Services",
+    text: "100% recommend! He sorted out my DPF and done a service which was well needed and over due! Thanks for the speedy service to get me back on the road safely and quickly.",
   },
 ];
 
@@ -37,7 +40,7 @@ export function Testimonials() {
           </blockquote>
           <figcaption className="mt-4 text-sm">
             <span className="font-semibold text-ink">{r.name}</span>
-            <span className="text-ink/55"> · {r.area}</span>
+            {r.area && <span className="text-ink/55"> · {r.area}</span>}
           </figcaption>
         </figure>
       ))}

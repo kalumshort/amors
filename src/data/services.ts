@@ -54,7 +54,7 @@ export const services: Service[] = [
       },
       {
         q: "How quickly can you come out?",
-        a: "We offer same-day fitting in most cases and 24/7 emergency call-out for unsafe or dangerous tyres.",
+        a: "We offer same-day fitting in most cases and 24/7 emergency tyre call-out for unsafe or dangerous tyres.",
       },
     ],
   },

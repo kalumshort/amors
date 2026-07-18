@@ -16,8 +16,8 @@ export const metadata: Metadata = {
 };
 
 const stats = [
-  { value: "7 days", label: "A week availability" },
-  { value: "24/7", label: "Emergency call-out" },
+  { value: "Mon–Fri", label: "8am–6pm servicing" },
+  { value: "24/7", label: "Emergency tyre call-out" },
   { value: `${business.serviceRadiusKm}km`, label: "Coverage radius" },
   { value: "All", label: "Makes & models" },
 ];
