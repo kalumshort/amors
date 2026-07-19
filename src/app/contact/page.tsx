@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Icon } from "@/components/Icon";
-import { ContactForm } from "@/components/ContactForm";
+import { Button } from "@/components/Button";
 import { CoverageMap } from "@/components/CoverageMap";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SectionDivider } from "@/components/SectionDivider";
@@ -15,7 +15,7 @@ import { breadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Contact & Free Quote — Mobile Tyres & Servicing Bristol",
-  description: `Get in touch with ${business.name} for a free, no-obligation quote. Call ${business.phoneDisplay}, WhatsApp or request a callback. Mobile service across ${business.baseCity}.`,
+  description: `Get in touch with ${business.name} for a free, no-obligation quote. Call ${business.phoneDisplay}, message on WhatsApp or email us. Mobile service across ${business.baseCity}.`,
   alternates: { canonical: "/contact" },
 };
 
@@ -58,9 +58,9 @@ export default function ContactPage() {
               Get a free quote
             </h1>
             <p className="mt-5 max-w-2xl text-lg text-white/75">
-              Tell us your vehicle, location and what you need — we&rsquo;ll get
-              straight back to you with an upfront price. For anything urgent,
-              call us directly.
+              Give us a call or message us on WhatsApp with your vehicle,
+              location and what you need — we&rsquo;ll come back to you with an
+              upfront price. No forms, no waiting around.
             </p>
           </div>
         </div>
@@ -119,14 +119,45 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Form */}
+          {/* Prefer to talk? — direct call / WhatsApp CTA */}
           <div>
-            <h2 className="text-2xl font-bold text-ink">Request a callback</h2>
+            <h2 className="text-2xl font-bold text-ink">Prefer to talk?</h2>
             <p className="mt-3 text-ink/65">
-              Fill in a few details and we&rsquo;ll be in touch shortly.
+              The quickest way to get a quote is a quick call or WhatsApp. You
+              get straight through to the family-run team — no call centres, no
+              hassle.
             </p>
-            <div className="mt-6">
-              <ContactForm />
+
+            <div className="mt-6 overflow-hidden rounded-2xl border border-line bg-ink text-white">
+              <div className="bg-grid-dark p-8 sm:p-10">
+                <p className="eyebrow text-brand-light">
+                  <Icon name="clock" className="h-4 w-4" />
+                  Same-day fitting &amp; 24/7 emergency tyre call-out
+                </p>
+                <p className="mt-4 text-lg text-white/80">
+                  Tell us your vehicle, location and what you need — we&rsquo;ll
+                  give you an upfront, no-obligation price on the spot.
+                </p>
+
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                  <Button href={telHref} variant="primary" size="lg">
+                    <Icon name="phone" className="h-5 w-5" />
+                    Call {business.phoneDisplay}
+                  </Button>
+                  <Button href={whatsappHref} variant="white" size="lg">
+                    <Icon name="whatsapp" className="h-5 w-5 text-brand" />
+                    Message on WhatsApp
+                  </Button>
+                </div>
+
+                <p className="mt-6 text-sm text-white/55">
+                  Prefer email? Reach us at{" "}
+                  <a href={mailHref} className="font-medium text-white underline">
+                    {business.email}
+                  </a>
+                  .
+                </p>
+              </div>
             </div>
           </div>
         </div>

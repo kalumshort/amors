@@ -11,23 +11,5 @@ runConfig:
 
 # Environment variables and secrets available at build & runtime.
 # Secrets must first be created in Cloud Secret Manager, e.g.:
-#   firebase apphosting:secrets:set RESEND_API_KEY
-env:
-  - variable: CONTACT_TO_EMAIL
-    value: amorstyresandservicing@outlook.com
-    availability:
-      - BUILD
-      - RUNTIME
-
-  # The verified Resend sender, e.g. "Amor's <enquiries@amorstyresandservicing.co.uk>"
-  - variable: CONTACT_FROM_EMAIL
-    value: "Amor's Website <onboarding@resend.dev>"
-    availability:
-      - BUILD
-      - RUNTIME
-
-  # Uncomment once the secret exists in Cloud Secret Manager:
-  # - variable: RESEND_API_KEY
-  #   secret: RESEND_API_KEY
-  #   availability:
-  #     - RUNTIME
+#   firebase apphosting:secrets:set MY_SECRET
+# (none required — the site has no server-side integrations)
