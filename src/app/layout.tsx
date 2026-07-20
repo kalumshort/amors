@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { StickyMobileCTA } from "@/components/StickyMobileCTA";
 import { JsonLd } from "@/components/JsonLd";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { localBusinessSchema } from "@/lib/seo";
 import { business } from "@/data/business";
 
@@ -77,6 +78,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <StickyMobileCTA />
+        <GoogleAnalytics />
       </body>
     </html>
   );
