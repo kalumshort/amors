@@ -1,8 +1,7 @@
-// Drop-in credit tag. Import and place inside your site's footer.
 export default function WebopiaTag() {
   return (
     <a
-      href="https://webopia.co.uk/?amorstyresandservicing.co.uk"
+      href="https://webopia.co.uk/work/amors-tyres-and-servicing?utm_source=amorstyresandservicing.co.uk&utm_medium=referral&utm_campaign=footer_badge"
       target="_blank"
       rel="noopener noreferrer"
       className="wbp-tag"
