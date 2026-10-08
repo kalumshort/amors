@@ -1,4 +1,5 @@
 import { Icon } from "./Icon";
+import { business } from "@/data/business";
 
 // Real customer reviews from our Facebook recommendations.
 type Review = {
@@ -24,26 +25,41 @@ const reviews: Review[] = [
 
 export function Testimonials() {
   return (
-    <div className="grid gap-6 md:grid-cols-3">
-      {reviews.map((r) => (
-        <figure
-          key={r.name}
-          className="flex flex-col rounded-2xl border border-line bg-white p-6 shadow-[var(--shadow-card)]"
-        >
-          <div className="flex gap-0.5 text-brand" aria-label="5 out of 5 stars">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <Icon key={i} name="star" className="h-4 w-4" />
-            ))}
-          </div>
-          <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-ink/75">
-            &ldquo;{r.text}&rdquo;
-          </blockquote>
-          <figcaption className="mt-4 text-sm">
-            <span className="font-semibold text-ink">{r.name}</span>
-            {r.area && <span className="text-ink/55"> · {r.area}</span>}
-          </figcaption>
-        </figure>
-      ))}
-    </div>
+    <>
+      <div className="grid gap-6 md:grid-cols-3">
+        {reviews.map((r) => (
+          <figure
+            key={r.name}
+            className="flex flex-col rounded-2xl border border-line bg-white p-6 shadow-[var(--shadow-card)]"
+          >
+            <div className="flex gap-0.5 text-brand" aria-label="5 out of 5 stars">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Icon key={i} name="star" className="h-4 w-4" />
+              ))}
+            </div>
+            <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-ink/75">
+              &ldquo;{r.text}&rdquo;
+            </blockquote>
+            <figcaption className="mt-4 text-sm">
+              <span className="font-semibold text-ink">{r.name}</span>
+              {r.area && <span className="text-ink/55"> · {r.area}</span>}
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+      {business.social.google && (
+        <p className="mt-8 text-center">
+          <a
+            href={business.social.google}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 font-semibold text-brand-dark hover:underline"
+          >
+            Read our Google reviews
+            <Icon name="arrow" className="h-4 w-4" />
+          </a>
+        </p>
+      )}
+    </>
   );
 }

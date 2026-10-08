@@ -127,7 +127,14 @@ export function Footer() {
             </li>
           </ul>
           <div className="mt-6 rounded-xl bg-white/5 p-4 text-sm">
-            <p className="font-semibold text-white">24/7 Emergency Tyre Call-Out</p>
+            <p className="font-semibold text-white">
+              <Link
+                href="/services/emergency-tyre-fitting"
+                className="hover:underline"
+              >
+                24/7 Emergency Tyre Call-Out
+              </Link>
+            </p>
             <p className="mt-1 text-white/70">
               Stuck with a flat or a blowout? Call us any time.
             </p>

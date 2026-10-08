@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Fragment } from "react";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/Button";
 import { Icon } from "@/components/Icon";
@@ -16,7 +18,7 @@ import { services } from "@/data/services";
 import type { Faq as FaqItem } from "@/data/services";
 import { business, telHref, whatsappHref } from "@/data/business";
 import {
-  locationBusinessSchema,
+  locationServiceSchema,
   breadcrumbSchema,
   faqSchema,
 } from "@/lib/seo";
@@ -32,7 +34,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const loc = getLocation(slug);
   if (!loc) return {};
   return {
-    title: `Mobile Tyres & Vehicle Servicing in ${loc.name}`,
+    title: `Mobile Tyres & Servicing in ${loc.name}`,
     description: `Mobile tyre fitting, servicing, diagnostics, brakes and batteries in ${loc.name}, ${loc.county}. We come to you — same-day tyre fitting & 24/7 emergency tyre call-out. Call ${business.phoneDisplay}.`,
     alternates: { canonical: `/locations/${loc.slug}` },
     openGraph: {
@@ -42,27 +44,16 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   };
 }
 
-// Build a location-specific FAQ (unique per area) when none is supplied.
+// Coverage question built from the area's own postcodes and landmarks,
+// followed by the hand-written local questions.
 function localFaqs(loc: Location): FaqItem[] {
-  if (loc.faqs?.length) return loc.faqs;
   const postcodes = loc.postcodes.join(", ");
   return [
     {
       q: `Do you cover the whole of ${loc.name}?`,
       a: `Yes — we cover ${loc.name} and the surrounding ${loc.county} area, including the ${postcodes} postcode${loc.postcodes.length > 1 ? "s" : ""} and nearby spots such as ${loc.landmarks.slice(0, 3).join(", ")}. If you're just outside, give us a call and we'll let you know.`,
     },
-    {
-      q: `Can you come to my home or workplace in ${loc.name}?`,
-      a: `Absolutely. As a fully mobile service we fit tyres and carry out servicing wherever your vehicle is safely parked in ${loc.name} — at home, at work or roadside.`,
-    },
-    {
-      q: `How quickly can you get to ${loc.name}?`,
-      a: `We offer same-day tyre fitting in most cases and 24/7 emergency tyre call-out for unsafe or dangerous tyres in ${loc.name}.`,
-    },
-    {
-      q: `How much does mobile tyre fitting in ${loc.name} cost?`,
-      a: `Pricing depends on your tyre size and vehicle, but we always give an upfront, all-in price before any work — no hidden call-out fees for ${loc.name} and the surrounding area.`,
-    },
+    ...loc.faqs,
   ];
 }
 
@@ -81,7 +72,7 @@ export default async function LocationPage({ params }: Params) {
 
   return (
     <>
-      <JsonLd data={locationBusinessSchema(loc)} />
+      <JsonLd data={locationServiceSchema(loc)} />
       <JsonLd data={breadcrumbSchema(crumbs)} />
       <JsonLd data={faqSchema(faqs)} />
 
@@ -132,9 +123,21 @@ export default async function LocationPage({ params }: Params) {
           <h2 className="text-2xl font-bold text-ink sm:text-3xl">
             Our services in {loc.name}
           </h2>
-          <p className="mt-3 max-w-2xl text-ink/65">
-            Everything we offer is available right across {loc.name} and the
-            surrounding {loc.county} area — we bring the tools to you.
+          <p className="mt-3 max-w-3xl text-ink/65">
+            In {loc.name} we offer{" "}
+            {services.map((s, i) => (
+              <Fragment key={s.slug}>
+                {i > 0 && (i === services.length - 1 ? " and " : ", ")}
+                <Link
+                  href={`/services/${s.slug}`}
+                  className="font-medium text-brand-dark hover:underline"
+                >
+                  {s.linkText}
+                </Link>
+              </Fragment>
+            ))}{" "}
+            — all carried out at your home or workplace across the{" "}
+            {loc.county} area.
           </p>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s) => (
@@ -159,6 +162,11 @@ export default async function LocationPage({ params }: Params) {
               {loc.postcodes.join(" and ")} area, our mobile team saves you the
               hassle of a garage visit and the wait that comes with it.
             </p>
+            {loc.localNotes.map((note) => (
+              <p key={note} className="mt-4 leading-relaxed text-ink/75">
+                {note}
+              </p>
+            ))}
 
             <h3 className="mt-8 font-semibold text-ink">
               Areas we cover in &amp; around {loc.name}

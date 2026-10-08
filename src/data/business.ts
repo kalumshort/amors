@@ -38,6 +38,9 @@ export const business = {
   // Social
   social: {
     facebook: "https://www.facebook.com/profile.php?id=61582734751190",
+    // Google Business Profile URL — leave empty until the profile is live.
+    // When set it is added to the schema and shown as a reviews link.
+    google: "" as string,
   },
 
   // BookMyGarage booking page. Our custom reg-plate lookup appends ?ref=<host>&vrm=<REG>
