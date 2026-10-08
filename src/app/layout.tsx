@@ -31,14 +31,6 @@ export const metadata: Metadata = {
   description: business.description,
   applicationName: business.name,
   authors: [{ name: business.name }],
-  keywords: [
-    "mobile tyres Bristol",
-    "mobile tyre fitting Bristol",
-    "mobile mechanic Bristol",
-    "vehicle servicing Bristol",
-    "emergency tyre fitting",
-    "car diagnostics Bristol",
-  ],
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",

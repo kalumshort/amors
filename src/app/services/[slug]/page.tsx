@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const service = getService(slug);
   if (!service) return {};
   return {
-    title: `${service.name} in ${business.baseCity} — Mobile & At Your Door`,
+    title: service.seoTitle,
     description: `${service.summary} Serving ${business.baseCity} and surrounding areas with fast, convenient turnaround.`,
     alternates: { canonical: `/services/${service.slug}` },
     openGraph: {
@@ -64,7 +64,7 @@ export default async function ServicePage({ params }: Params) {
               </span>
               <div>
                 <h1 className="text-4xl font-extrabold sm:text-5xl">
-                  {service.name}
+                  {service.h1}
                 </h1>
                 <p className="mt-4 max-w-2xl text-lg text-white/75">
                   {service.summary}
@@ -93,6 +93,17 @@ export default async function ServicePage({ params }: Params) {
             <p className="text-lg leading-relaxed text-ink/80">
               {service.intro}
             </p>
+
+            {service.sections.map((section) => (
+              <div key={section.heading}>
+                <h2 className="mt-12 text-2xl font-bold text-ink">
+                  {section.heading}
+                </h2>
+                <p className="mt-4 leading-relaxed text-ink/75">
+                  {section.body}
+                </p>
+              </div>
+            ))}
 
             <h2 className="mt-12 text-2xl font-bold text-ink">
               Why choose our mobile {service.short.toLowerCase()} service
@@ -186,7 +197,7 @@ export default async function ServicePage({ params }: Params) {
             yours for local details.
           </p>
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {locations.slice(0, 9).map((l) => (
+            {locations.map((l) => (
               <LocationCard key={l.slug} location={l} />
             ))}
           </div>

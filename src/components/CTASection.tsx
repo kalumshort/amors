@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "./Button";
 import { Icon } from "./Icon";
 import { business, telHref, whatsappHref } from "@/data/business";
@@ -17,7 +18,15 @@ export function CTASection({
         <div className="container-x py-16 text-center lg:py-20">
           <p className="eyebrow justify-center text-brand-light">
             <Icon name="clock" className="h-4 w-4" />
-            Same-day fitting &amp; 24/7 emergency tyre call-out
+            <span>
+              Same-day fitting &amp;{" "}
+              <Link
+                href="/services/emergency-tyre-fitting"
+                className="hover:underline"
+              >
+                24/7 emergency tyre call-out
+              </Link>
+            </span>
           </p>
           <h2 className="mx-auto mt-4 max-w-2xl text-3xl font-extrabold sm:text-4xl">
             {title}

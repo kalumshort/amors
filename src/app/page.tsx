@@ -58,13 +58,25 @@ export default function HomePage() {
 
               <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/70">
                 {[
-                  "We come to you",
-                  "Same-day tyre fitting",
-                  "24/7 emergency tyre call-out",
+                  { label: "We come to you" },
+                  {
+                    label: "Same-day tyre fitting",
+                    href: "/services/mobile-tyre-fitting",
+                  },
+                  {
+                    label: "24/7 emergency tyre call-out",
+                    href: "/services/emergency-tyre-fitting",
+                  },
                 ].map((p) => (
-                  <li key={p} className="flex items-center gap-2">
+                  <li key={p.label} className="flex items-center gap-2">
                     <Icon name="check" className="h-4 w-4 text-brand-light" />
-                    {p}
+                    {p.href ? (
+                      <Link href={p.href} className="hover:underline">
+                        {p.label}
+                      </Link>
+                    ) : (
+                      p.label
+                    )}
                   </li>
                 ))}
               </ul>

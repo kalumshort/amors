@@ -4,7 +4,9 @@ export function JsonLd({ data }: { data: Record<string, unknown> }) {
     <script
       type="application/ld+json"
       // Structured data is trusted, first-party content built from our own data.
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(data).replace(/</g, "\\u003c"),
+      }}
     />
   );
 }
