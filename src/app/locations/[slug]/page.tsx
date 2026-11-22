@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   if (!loc) return {};
   return {
     title: `Mobile Tyres & Servicing in ${loc.name}`,
-    description: `Mobile tyre fitting, servicing, diagnostics, brakes and batteries in ${loc.name}, ${loc.county}. We come to you — same-day tyre fitting & 24/7 emergency tyre call-out. Call ${business.phoneDisplay}.`,
+    description: `Mobile tyre fitting, servicing and diagnostics in ${loc.name}. We come to you, with 24/7 emergency tyre call-out. Call ${business.phoneDisplay}.`,
     alternates: { canonical: `/locations/${loc.slug}` },
     openGraph: {
       title: `Mobile Tyres & Servicing in ${loc.name} | ${business.name}`,

@@ -6,7 +6,7 @@ import { locations } from "@/data/locations";
 // Date the page content last changed. Update this when copy is edited —
 // a build-time `new Date()` would tell crawlers every page changed on
 // every deploy, which makes the value meaningless.
-const CONTENT_UPDATED = new Date("2026-10-08");
+const CONTENT_UPDATED = new Date("2026-11-22");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = business.url;

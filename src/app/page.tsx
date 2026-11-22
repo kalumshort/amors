@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/Button";
 import { Icon } from "@/components/Icon";
@@ -14,6 +15,14 @@ import { BookingLookup } from "@/components/BookingLookup";
 import { services } from "@/data/services";
 import { locations } from "@/data/locations";
 import { business, telHref, whatsappHref, trustPoints } from "@/data/business";
+
+export const metadata: Metadata = {
+  // Absolute, so the layout's "%s | business name" template isn't applied.
+  title: {
+    absolute: `Mobile Tyre Fitting & Servicing ${business.baseCity} | ${business.shortName} Tyres`,
+  },
+  description: `Mobile tyre fitting in ${business.baseCity} at your home, work or roadside, plus servicing and diagnostics. 24/7 emergency tyre call-out. Call ${business.phoneDisplay}.`,
+};
 
 const steps = [
   {
@@ -43,11 +52,12 @@ export default function HomePage() {
             <div>
               <p className="eyebrow text-brand-light">
                 <Icon name="pin" className="h-4 w-4" />
-                {business.baseCity} &amp; surrounding areas
+                {business.baseCity}{" "}
+                &amp; surrounding areas
               </p>
               <h1 className="mt-4 text-4xl font-extrabold leading-[1.05] sm:text-5xl lg:text-6xl">
-                Mobile tyres &amp; servicing that{" "}
-                <span className="text-brand">come to you</span>
+                Mobile tyre fitting &amp; servicing in {business.baseCity}{" "}
+                &ndash; <span className="text-brand">we come to you</span>
               </h1>
               <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/75">
                 Family-run mobile tyre fitting, vehicle servicing and
@@ -60,7 +70,7 @@ export default function HomePage() {
                 {[
                   { label: "We come to you" },
                   {
-                    label: "Same-day tyre fitting",
+                    label: "Same-day mobile tyre fitting",
                     href: "/services/mobile-tyre-fitting",
                   },
                   {

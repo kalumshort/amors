@@ -15,7 +15,7 @@ import { breadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Contact & Free Quote — Mobile Tyres & Servicing Bristol",
-  description: `Get in touch with ${business.name} for a free, no-obligation quote. Call ${business.phoneDisplay}, message on WhatsApp or email us. Mobile service across ${business.baseCity}.`,
+  description: `Get a free, no-obligation quote for mobile tyres or servicing in ${business.baseCity}. Call ${business.phoneDisplay}, message us on WhatsApp or email ${business.name}.`,
   alternates: { canonical: "/contact" },
 };
 

@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   if (!service) return {};
   return {
     title: service.seoTitle,
-    description: `${service.summary} Serving ${business.baseCity} and surrounding areas with fast, convenient turnaround.`,
+    description: `${service.summary} Covering ${business.baseCity}. Call ${business.phoneDisplay}.`,
     alternates: { canonical: `/services/${service.slug}` },
     openGraph: {
       title: `${service.name} | ${business.name}`,

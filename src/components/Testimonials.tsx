@@ -1,7 +1,8 @@
 import { Icon } from "./Icon";
 import { business } from "@/data/business";
 
-// Real customer reviews from our Facebook recommendations.
+// Real customer recommendations from Facebook. Facebook recommendations
+// have no star score, so don't show stars on them.
 type Review = {
   name: string;
   area?: string;
@@ -32,11 +33,9 @@ export function Testimonials() {
             key={r.name}
             className="flex flex-col rounded-2xl border border-line bg-white p-6 shadow-[var(--shadow-card)]"
           >
-            <div className="flex gap-0.5 text-brand" aria-label="5 out of 5 stars">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Icon key={i} name="star" className="h-4 w-4" />
-              ))}
-            </div>
+            <p className="text-xs font-semibold uppercase tracking-wide text-brand-dark">
+              Facebook recommendation
+            </p>
             <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-ink/75">
               &ldquo;{r.text}&rdquo;
             </blockquote>

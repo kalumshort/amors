@@ -11,7 +11,7 @@ import { breadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "About Us — Family-Run Mobile Mechanics in Bristol",
-  description: `Amor's Tyres and Servicing is a family-run mobile tyre and vehicle servicing business in ${business.baseCity}, built on honest pricing and convenient, come-to-you car care.`,
+  description: `${business.name} is a family-run mobile tyre and servicing business in ${business.baseCity}, built on honest pricing and car care that comes to you.`,
   alternates: { canonical: "/about" },
 };
 
@@ -40,7 +40,8 @@ export default function AboutPage() {
               A family-run garage that comes to you
             </h1>
             <p className="mt-5 max-w-2xl text-lg text-white/75">
-              We started {business.name} with one simple idea: quality car care
+              We started {business.name}{" "}
+              with one simple idea: quality car care
               shouldn&rsquo;t mean losing a day at the garage. So we bring the
               garage to you.
             </p>

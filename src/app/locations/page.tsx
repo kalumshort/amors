@@ -11,7 +11,7 @@ import { breadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Areas We Cover — Mobile Tyres & Servicing Near You",
-  description: `We provide mobile tyre fitting and vehicle servicing across ${business.baseCity} and the surrounding areas, including Clifton, Kingswood, Portishead, Keynsham, Bath and more.`,
+  description: `Mobile tyre fitting and vehicle servicing across ${business.baseCity} and nearby areas, including Clifton, Kingswood, Portishead, Keynsham and Bath. We come to you.`,
   alternates: { canonical: "/locations" },
 };
 
