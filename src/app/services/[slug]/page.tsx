@@ -144,7 +144,8 @@ export default async function ServicePage({ params }: Params) {
             )}
 
             <h2 className="mt-12 text-2xl font-bold text-ink">
-              Why choose our mobile {service.short.toLowerCase()} service
+              {service.whyHeading ??
+                `Why choose our mobile ${service.short.toLowerCase()} service`}
             </h2>
             <ul className="mt-6 grid gap-3 sm:grid-cols-2">
               {service.benefits.map((b) => (

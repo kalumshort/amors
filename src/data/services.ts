@@ -47,6 +47,8 @@ export type Service = {
   reviews?: Review[];
   /** Replaces the generic "near you" heading and line above the area cards */
   coverage?: { heading: string; body: string };
+  /** Replaces "Why choose our mobile <short> service" where that reads badly */
+  whyHeading?: string;
 };
 
 export const services: Service[] = [
@@ -143,6 +145,7 @@ export const services: Service[] = [
     slug: "emergency-tyre-fitting",
     name: "Emergency Tyre Fitting",
     short: "Emergency Tyres",
+    whyHeading: "Why choose our emergency tyre call-out",
     icon: "alert",
     seoTitle: "24/7 Emergency Tyre Fitting Bristol",
     h1: "24/7 Emergency Mobile Tyre Fitting in Bristol",
