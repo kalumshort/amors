@@ -1,6 +1,14 @@
 // Services offered — drives the services index and each /services/[slug] page.
 // `icon` maps to a key in components/Icon.tsx.
 
+import type { StaticImageData } from "next/image";
+import type { Review } from "./reviews";
+import { tyreFittingReviews } from "./reviews";
+import tyreMachine from "../../public/gallery/work-06.jpg";
+import kerbsideWheel from "../../public/gallery/work-12.jpg";
+import drivewayWheel from "../../public/gallery/work-04.jpg";
+import shreddedSidewall from "../../public/gallery/work-03.jpg";
+
 export type Faq = { q: string; a: string };
 
 export type ServiceSection = { heading: string; body: string };
@@ -30,6 +38,12 @@ export type Service = {
   faqs: Faq[];
   /** Available 24/7 rather than during normal opening hours */
   roundTheClock?: boolean;
+  /** Photos of real jobs for this service, shown on its page */
+  photos?: { src: StaticImageData; alt: string; caption: string }[];
+  /** Google reviews about this service, shown with the rating on its page */
+  reviews?: Review[];
+  /** Replaces the generic "near you" heading and line above the area cards */
+  coverage?: { heading: string; body: string };
 };
 
 export const services: Service[] = [
@@ -94,6 +108,33 @@ export const services: Service[] = [
         a: "A driveway, a marked parking bay or a quiet stretch of road is usually fine. We need firm, fairly level ground and enough room to work safely around the wheel being changed.",
       },
     ],
+    photos: [
+      {
+        src: tyreMachine,
+        alt: "Technician fitting a new tyre on the tyre machine inside the mobile fitting van",
+        caption: "Fitting a new tyre on the machine in our van",
+      },
+      {
+        src: kerbsideWheel,
+        alt: "Technician removing a wheel from a Mercedes at the kerbside",
+        caption: "Kerbside wheel change on a Mercedes",
+      },
+      {
+        src: drivewayWheel,
+        alt: "Ford Fiesta on a trolley jack with a front wheel removed, the Amor's Tyres and Servicing van behind",
+        caption: "Front tyre change on a customer's driveway",
+      },
+      {
+        src: shreddedSidewall,
+        alt: "Audi tyre with a shredded sidewall after being driven on flat",
+        caption: "Sidewall damage like this can't be repaired",
+      },
+    ],
+    reviews: tyreFittingReviews,
+    coverage: {
+      heading: "Mobile tyre fitting across Bristol",
+      body: "We fit tyres at homes, workplaces and the roadside right across Bristol: the city centre and Harbourside (BS1), Clifton and Redland (BS8, BS6), Bedminster and Knowle (BS3, BS4), Easton and St George (BS5), Horfield (BS7), Fishponds (BS16), Kingswood (BS15) and Filton (BS34). We also cover the surrounding towns, from Portishead and Clevedon to Keynsham, Yate and Bath. Choose your area for local details.",
+    },
   },
   {
     slug: "emergency-tyre-fitting",

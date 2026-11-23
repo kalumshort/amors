@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/Button";
 import { Icon } from "@/components/Icon";
 import { Faq } from "@/components/Faq";
@@ -8,6 +9,8 @@ import { CTASection } from "@/components/CTASection";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SectionDivider } from "@/components/SectionDivider";
 import { LocationCard } from "@/components/LocationCard";
+import { SectionHeading } from "@/components/SectionHeading";
+import { GoogleRating, Testimonials } from "@/components/Testimonials";
 import { JsonLd } from "@/components/JsonLd";
 import { services, getService } from "@/data/services";
 import { locations } from "@/data/locations";
@@ -69,6 +72,11 @@ export default async function ServicePage({ params }: Params) {
                 <p className="mt-4 max-w-2xl text-lg text-white/75">
                   {service.summary}
                 </p>
+                {service.reviews && (
+                  <div className="mt-5">
+                    <GoogleRating tone="dark" />
+                  </div>
+                )}
               </div>
             </div>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -104,6 +112,36 @@ export default async function ServicePage({ params }: Params) {
                 </p>
               </div>
             ))}
+
+            {service.photos && (
+              <>
+                <h2 className="mt-12 text-2xl font-bold text-ink">
+                  Recent {service.short.toLowerCase()} jobs
+                </h2>
+                <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                  {service.photos.map((photo) => (
+                    <figure
+                      key={photo.caption}
+                      className="overflow-hidden rounded-2xl border border-line bg-white"
+                    >
+                      <div className="relative aspect-[4/3] bg-ink">
+                        <Image
+                          src={photo.src}
+                          alt={photo.alt}
+                          fill
+                          placeholder="blur"
+                          sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
+                          className="object-cover"
+                        />
+                      </div>
+                      <figcaption className="px-4 py-3 text-sm text-ink/70">
+                        {photo.caption}
+                      </figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </>
+            )}
 
             <h2 className="mt-12 text-2xl font-bold text-ink">
               Why choose our mobile {service.short.toLowerCase()} service
@@ -186,15 +224,29 @@ export default async function ServicePage({ params }: Params) {
 
       <SectionDivider top="paper" bottom="mist" variant="slant" />
 
+      {service.reviews && (
+        <section className="bg-mist pt-16">
+          <div className="container-x">
+            <SectionHeading
+              eyebrow="Customer reviews"
+              title={`What customers say about our ${service.name.toLowerCase()}`}
+            />
+            <div className="mt-12">
+              <Testimonials reviews={service.reviews} />
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Areas */}
       <section className="bg-mist py-16">
         <div className="container-x">
           <h2 className="text-2xl font-bold text-ink">
-            {service.name} near you
+            {service.coverage?.heading ?? `${service.name} near you`}
           </h2>
-          <p className="mt-2 text-ink/65">
-            We provide {service.name.toLowerCase()} across these areas — tap
-            yours for local details.
+          <p className="mt-2 max-w-3xl text-ink/65">
+            {service.coverage?.body ??
+              `We provide ${service.name.toLowerCase()} across these areas — tap yours for local details.`}
           </p>
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {locations.map((l) => (

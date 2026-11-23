@@ -1,52 +1,50 @@
 import { Icon } from "./Icon";
 import { business } from "@/data/business";
+import { homeReviews, type Review } from "@/data/reviews";
 
-// Real 5-star reviews from our Google Business Profile, quoted word for word
-// and in full (copied 2026-11-23). Only use complete reviews, never a
-// snippet Google has cut short with "More".
-type Review = {
-  name: string;
-  area?: string;
-  text: string;
-};
-
-const reviews: Review[] = [
-  {
-    name: "Irina D.",
-    text: "Kieran did an amazing job changing 4 tyres on my EV today. Super efficient, friendly and professional. Competitive price and punctual. Excellent mobile service. Happy to recommend with confidence!",
-  },
-  {
-    name: "Lee B.",
-    text: "Sorry for the late review. I was rescued on the M5 after a pot hole incident. Amors came out, called by the RAC, early on a Sunday morning coming back from the airport. Fab service, really quick attendance and changed my tyre at a reasonable price. Lovely chap, great service. Thank you.",
-  },
-  {
-    name: "Stuart K.",
-    text: "Incredibly efficient and tried to do the cheapest and easier option available, not just take my money. Would 100 percent use their services again.",
-  },
-];
-
-export function Testimonials() {
+/**
+ * "★★★★★ Rated 5.0 on Google from 20 reviews", linking to the Google profile.
+ * `tone="dark"` is for use on the dark hero backgrounds.
+ */
+export function GoogleRating({ tone = "light" }: { tone?: "light" | "dark" }) {
   const { score, count } = business.googleRating;
+  const dark = tone === "dark";
+  return (
+    <a
+      href={business.social.google}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`inline-flex flex-wrap items-center justify-center gap-x-3 gap-y-1 rounded-full border px-5 py-2.5 text-sm ${
+        dark
+          ? "border-white/15 bg-white/5 text-white/75 hover:border-white/40"
+          : "border-line bg-white text-ink/75 shadow-[var(--shadow-card)] hover:border-brand/40"
+      }`}
+    >
+      <span
+        className={`flex gap-0.5 ${dark ? "text-brand-light" : "text-brand"}`}
+        aria-hidden
+      >
+        {Array.from({ length: 5 }).map((_, i) => (
+          <Icon key={i} name="star" className="h-4 w-4" />
+        ))}
+      </span>
+      <span>
+        Rated{" "}
+        <strong className={`font-bold ${dark ? "text-white" : "text-ink"}`}>
+          {score}
+        </strong>{" "}
+        on Google{" "}
+        <span className="whitespace-nowrap">from {count} reviews</span>
+      </span>
+    </a>
+  );
+}
+
+export function Testimonials({ reviews = homeReviews }: { reviews?: Review[] }) {
   return (
     <>
       <p className="mb-10 text-center">
-        <a
-          href={business.social.google}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex flex-wrap items-center justify-center gap-x-3 gap-y-1 rounded-full border border-line bg-white px-5 py-2.5 text-sm text-ink/75 shadow-[var(--shadow-card)] hover:border-brand/40"
-        >
-          <span className="flex gap-0.5 text-brand" aria-hidden>
-            {Array.from({ length: 5 }).map((_, i) => (
-              <Icon key={i} name="star" className="h-4 w-4" />
-            ))}
-          </span>
-          <span>
-            Rated <strong className="font-bold text-ink">{score}</strong> on
-            Google{" "}
-            <span className="whitespace-nowrap">from {count} reviews</span>
-          </span>
-        </a>
+        <GoogleRating />
       </p>
       <div className="grid gap-6 md:grid-cols-3">
         {reviews.map((r) => (
