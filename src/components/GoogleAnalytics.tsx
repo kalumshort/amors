@@ -1,6 +1,8 @@
 import Script from "next/script";
+import { GA_MEASUREMENT_ID } from "@/lib/analytics";
 
-const GA_MEASUREMENT_ID = "G-CG2Y38PC1F";
+// Visitors who opt out on /privacy are switched off in instrumentation-client.ts,
+// which runs before this tag.
 
 // Loads the Google Analytics gtag.js tag. Server component — `afterInteractive`
 // keeps the tag off the critical path while still firing on every page view.

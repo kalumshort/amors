@@ -7,8 +7,13 @@
 // they're reported as "header", "footer" or "page".
 //
 // Events: click_call and click_whatsapp, with cta_location and link_text.
+//
+// It also applies the visitor's analytics opt-out from the privacy page
+// before the Google Analytics tag loads. Opted-out visitors send nothing.
 
-export {};
+import { applyAnalyticsChoice } from "@/lib/analytics";
+
+applyAnalyticsChoice();
 
 type Gtag = (...args: unknown[]) => void;
 

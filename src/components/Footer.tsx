@@ -146,7 +146,10 @@ export function Footer() {
         <div className="container-x flex flex-col items-center gap-6 py-6 sm:flex-row sm:justify-between">
           <div className="flex flex-col items-center gap-1 text-xs text-white/50 sm:items-start">
             <p>
-              &copy; {year} {business.name}. All rights reserved.
+              &copy; {year} {business.name}. All rights reserved.{" "}
+              <Link href="/privacy" className="underline hover:text-white">
+                Privacy
+              </Link>
             </p>
             <p>
               Mobile tyres &amp; vehicle servicing across {business.baseCity}{" "}

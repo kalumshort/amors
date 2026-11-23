@@ -34,5 +34,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
-  return [...staticRoutes, ...serviceRoutes, ...locationRoutes];
+  const privacyRoute = {
+    url: `${base}/privacy`,
+    lastModified: new Date("2026-11-23"),
+    changeFrequency: "yearly" as const,
+    priority: 0.2,
+  };
+
+  return [...staticRoutes, ...serviceRoutes, ...locationRoutes, privacyRoute];
 }
