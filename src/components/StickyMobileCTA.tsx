@@ -5,7 +5,9 @@ import { business, telHref, whatsappHref } from "@/data/business";
 // traffic is overwhelmingly on phones, so keep conversion one tap away.
 export function StickyMobileCTA() {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 gap-px border-t border-white/10 bg-ink lg:hidden">
+    <div
+      data-cta="sticky_bar"
+      className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 gap-px border-t border-white/10 bg-ink lg:hidden">
       <a
         href={telHref}
         className="flex items-center justify-center gap-2 bg-brand py-3.5 text-sm font-semibold text-white"

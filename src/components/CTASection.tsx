@@ -13,7 +13,7 @@ export function CTASection({
   subtitle,
 }: Props) {
   return (
-    <section className="bg-ink text-white">
+    <section className="bg-ink text-white" data-cta="cta_banner">
       <div className="bg-grid-dark">
         <div className="container-x py-16 text-center lg:py-20">
           <p className="eyebrow justify-center text-brand-light">
