@@ -116,7 +116,7 @@ export default async function ServicePage({ params }: Params) {
             {service.photos && (
               <>
                 <h2 className="mt-12 text-2xl font-bold text-ink">
-                  Recent {service.short.toLowerCase()} jobs
+                  Recent {service.name.toLowerCase()} jobs
                 </h2>
                 <div className="mt-6 grid gap-4 sm:grid-cols-2">
                   {service.photos.map((photo) => (

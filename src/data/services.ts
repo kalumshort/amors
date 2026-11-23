@@ -3,11 +3,14 @@
 
 import type { StaticImageData } from "next/image";
 import type { Review } from "./reviews";
-import { tyreFittingReviews } from "./reviews";
+import { emergencyReviews, punctureReviews, tyreFittingReviews } from "./reviews";
 import tyreMachine from "../../public/gallery/work-06.jpg";
 import kerbsideWheel from "../../public/gallery/work-12.jpg";
 import drivewayWheel from "../../public/gallery/work-04.jpg";
 import shreddedSidewall from "../../public/gallery/work-03.jpg";
+import flatTyre from "../../public/gallery/work-02.jpg";
+import blowout from "../../public/gallery/work-05.jpg";
+import rainyJob from "../../public/gallery/work-09.jpg";
 
 export type Faq = { q: string; a: string };
 
@@ -198,6 +201,33 @@ export const services: Service[] = [
         a: "Bristol and the surrounding areas, including South Gloucestershire, North Somerset, Keynsham and Bath. If you're not sure whether we reach you, call and we'll tell you straight away.",
       },
     ],
+    photos: [
+      {
+        src: blowout,
+        alt: "Tyre torn apart around the rim after a blowout, lying in the mobile fitting van",
+        caption: "A tyre destroyed by a blowout",
+      },
+      {
+        src: flatTyre,
+        alt: "Flat front tyre on a Hyundai parked on a block-paved driveway",
+        caption: "A flat front tyre on a customer's driveway",
+      },
+      {
+        src: kerbsideWheel,
+        alt: "Technician removing a wheel from a Mercedes at the kerbside",
+        caption: "Changing a wheel at the kerbside",
+      },
+      {
+        src: rainyJob,
+        alt: "Two Minis being worked on beside the Amor's van, one under a gazebo in the rain",
+        caption: "Out in all weathers, with a gazebo for the rain",
+      },
+    ],
+    reviews: emergencyReviews,
+    coverage: {
+      heading: "Emergency tyre call-out across Bristol",
+      body: "Day or night, we come out to flat and damaged tyres across Bristol: at home, at work or at the roadside, from the city centre (BS1) and Clifton (BS8) to Bedminster (BS3), Fishponds (BS16), Kingswood (BS15) and Filton (BS34). The call-out also covers the towns around the city, from Portishead to Keynsham, Yate and Bath, and drivers caught out near the M4, M5 and M32. Choose your area for local details.",
+    },
   },
   {
     slug: "puncture-repair",
@@ -256,6 +286,33 @@ export const services: Service[] = [
         a: "We'll show you the damage and explain why. We can then supply and fit a replacement to suit your budget, usually on the same visit.",
       },
     ],
+    photos: [
+      {
+        src: flatTyre,
+        alt: "Flat front tyre on a Hyundai parked on a block-paved driveway",
+        caption: "A flat tyre on a customer's driveway",
+      },
+      {
+        src: tyreMachine,
+        alt: "Technician fitting a new tyre on the tyre machine inside the mobile fitting van",
+        caption: "The tyre machine in our van lets us work on site",
+      },
+      {
+        src: shreddedSidewall,
+        alt: "Audi tyre with a shredded sidewall after being driven on flat",
+        caption: "Sidewall damage like this can't be repaired",
+      },
+      {
+        src: blowout,
+        alt: "Tyre torn apart around the rim after a blowout, lying in the mobile fitting van",
+        caption: "Beyond repair after a blowout: this one needed replacing",
+      },
+    ],
+    reviews: punctureReviews,
+    coverage: {
+      heading: "Mobile puncture repair across Bristol",
+      body: "Picked up a nail or a slow puncture? We repair tyres on your driveway, at work or at the kerbside across Bristol, from Redland (BS6) and Horfield (BS7) to Easton (BS5), Knowle (BS4) and Bradley Stoke (BS32), and in the towns around the city, from Clevedon and Nailsea to Thornbury. Choose your area for local details.",
+    },
   },
   {
     slug: "vehicle-servicing",
