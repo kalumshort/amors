@@ -1,8 +1,9 @@
 import { Icon } from "./Icon";
 import { business } from "@/data/business";
 
-// Real customer recommendations from Facebook. Facebook recommendations
-// have no star score, so don't show stars on them.
+// Real 5-star reviews from our Google Business Profile, quoted word for word
+// and in full (copied 2026-11-23). Only use complete reviews, never a
+// snippet Google has cut short with "More".
 type Review = {
   name: string;
   area?: string;
@@ -11,16 +12,16 @@ type Review = {
 
 const reviews: Review[] = [
   {
-    name: "Hayley M.",
-    text: "Excellent service, called early this morning about a flat tyre and was fixed within the hour! Highly recommend.",
+    name: "Irina D.",
+    text: "Kieran did an amazing job changing 4 tyres on my EV today. Super efficient, friendly and professional. Competitive price and punctual. Excellent mobile service. Happy to recommend with confidence!",
   },
   {
-    name: "MGF Window Cleaning",
-    text: "Highly recommend. Changed both our front tyres while we were still able to work and recommended a better quality tyre for our van to what we have usually been given by a standard garage. Friendly, reliable and quality service.",
+    name: "Lee B.",
+    text: "Sorry for the late review. I was rescued on the M5 after a pot hole incident. Amors came out, called by the RAC, early on a Sunday morning coming back from the airport. Fab service, really quick attendance and changed my tyre at a reasonable price. Lovely chap, great service. Thank you.",
   },
   {
-    name: "Paws & Plays Pet Services",
-    text: "100% recommend! He sorted out my DPF and done a service which was well needed and over due! Thanks for the speedy service to get me back on the road safely and quickly.",
+    name: "Stuart K.",
+    text: "Incredibly efficient and tried to do the cheapest and easier option available, not just take my money. Would 100 percent use their services again.",
   },
 ];
 
@@ -53,9 +54,16 @@ export function Testimonials() {
             key={r.name}
             className="flex flex-col rounded-2xl border border-line bg-white p-6 shadow-[var(--shadow-card)]"
           >
-            <p className="text-xs font-semibold uppercase tracking-wide text-brand-dark">
-              Facebook recommendation
-            </p>
+            <div className="flex items-center justify-between gap-3">
+              <span className="flex gap-0.5 text-brand" aria-label="5 out of 5 stars">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Icon key={i} name="star" className="h-4 w-4" />
+                ))}
+              </span>
+              <span className="text-xs font-semibold uppercase tracking-wide text-ink/50">
+                Google review
+              </span>
+            </div>
             <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-ink/75">
               &ldquo;{r.text}&rdquo;
             </blockquote>
