@@ -25,8 +25,28 @@ const reviews: Review[] = [
 ];
 
 export function Testimonials() {
+  const { score, count } = business.googleRating;
   return (
     <>
+      <p className="mb-10 text-center">
+        <a
+          href={business.social.google}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex flex-wrap items-center justify-center gap-x-3 gap-y-1 rounded-full border border-line bg-white px-5 py-2.5 text-sm text-ink/75 shadow-[var(--shadow-card)] hover:border-brand/40"
+        >
+          <span className="flex gap-0.5 text-brand" aria-hidden>
+            {Array.from({ length: 5 }).map((_, i) => (
+              <Icon key={i} name="star" className="h-4 w-4" />
+            ))}
+          </span>
+          <span>
+            Rated <strong className="font-bold text-ink">{score}</strong> on
+            Google{" "}
+            <span className="whitespace-nowrap">from {count} reviews</span>
+          </span>
+        </a>
+      </p>
       <div className="grid gap-6 md:grid-cols-3">
         {reviews.map((r) => (
           <figure

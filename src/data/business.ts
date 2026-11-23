@@ -43,6 +43,11 @@ export const business = {
     google: "https://share.google/YpmeC4PTXkCbpna07" as string,
   },
 
+  // Google rating shown above the testimonials. Not added to the schema:
+  // Google ignores a business's own rating markup. Update by hand when the
+  // count changes, from the Google Business Profile.
+  googleRating: { score: "5.0", count: 20, checked: "2026-11-23" },
+
   // BookMyGarage booking page. Our custom reg-plate lookup appends ?ref=<host>&vrm=<REG>
   // and opens this in a new tab.
   bookingUrl:
